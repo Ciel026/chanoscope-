@@ -7,8 +7,8 @@ import os
 
 app = Flask(__name__)
 
-# Define the path to your model (adjust this path to where you place the model in your project)
-model_path = '/opt/render/project/src/model/cnn_scoop.h5'
+# Use the current working directory to locate the model
+model_path = os.path.join(os.getcwd(), 'cnn_scoop.h5')
 
 # Load the model
 model = load_model(model_path)
