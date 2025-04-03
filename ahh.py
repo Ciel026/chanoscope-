@@ -7,15 +7,11 @@ import os
 
 app = Flask(__name__)
 
-# Get the path to the user's home directory (Windows specific)
-user_profile = os.getenv('USERPROFILE')
-
-# Construct the path to your model in the Downloads folder (adjust accordingly)
-model_path = os.path.join(user_profile, 'Downloads', 'bangvs_', 'cnn_scoop.h5')
+# Define the path to your model (adjust this path to where you place the model in your project)
+model_path = '/opt/render/project/src/model/cnn_scoop.h5'
 
 # Load the model
 model = load_model(model_path)
-
 
 # Function to preprocess the image
 def preprocess_image(image):
@@ -30,7 +26,6 @@ def preprocess_image(image):
     image = np.expand_dims(image, axis=0)
     
     return image
-
 
 @app.route('/predict', methods=['POST'])
 def predict():
